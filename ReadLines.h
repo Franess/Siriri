@@ -8,7 +8,7 @@ class ReadLines {
 public:
 	ReadLines();
 	std::string* gLines(unsigned int i); 
-	void lineRead(std::string line);
+	[[nodiscard]] bool lineRead(std::string line); //Se puede utilizar ignorando el retorno
 	~ReadLines();
 private:
 	std::vector<std::string> m_lines;
