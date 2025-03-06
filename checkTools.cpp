@@ -1,23 +1,34 @@
 #include "checkTools.h"
-bool checkKeyWords(const std::vector<std::string> &v)
+int checkKeyWords(const std::vector<std::string> &line_vec)
 {
 	
-	return false;
+	return 0;
 }
 //Formato de la instruccion: P_CLAVE -VALOR NOMBRE
-std::vector<std::string> lineSplitter(std::string s)
+int lineSplitter(std::string s,std::vector<std::string> &aux_vec)
 {
-	std::vector<std::string> aux_vec;
-	auto it_spaces = std::remove(s.begin(),s.end(),' ');
-	s.erase(it_spaces-s.begin(),s.end()-it_spaces);
-	auto a_it = std::find(s.begin(),s.end(),'-');
+	aux_vec.clear();
+	auto a_it = std::find(s.begin(),s.end(),' ');
 	auto p_it = s.begin();
 	while(a_it!=s.end())
 	{
-		aux_vec.push_back(s.substr(std::next(p_it)-s.begin(),std::prev(a_it)-p_it));
+		if(*std::next(a_it) == ' ' || *std::prev(a_it) == ' ')
+		{
+			aux_vec.clear();
+			return 2;
+		}
+		aux_vec.push_back(s.substr(p_it-s.begin(),a_it-p_it));
 		p_it = a_it;
-		a_it = std::find(std::next(p_it),s.end(),'-');
+		a_it = std::find(std::next(p_it),s.end(),' ');
+		std::advance(p_it,1);
 	}
-	aux_vec.push_back(s.substr(std::next(p_it)-s.begin(),s.end()-p_it));
-	return aux_vec;
+	std::string last_instr = s.substr(p_it-s.begin(),s.end()-p_it);
+	if(last_instr.length()>0)
+		aux_vec.push_back(last_instr);
+	return 1;
+}
+
+int rstrCheckline(std::string s)
+{
+	return 0;
 }

@@ -19,7 +19,7 @@ current_source=main.cpp
 path_char=/
 [source]
 path=main.cpp
-cursor=9:49
+cursor=10:26
 open=true
 [source]
 path=ReadLines.cpp
@@ -27,7 +27,7 @@ cursor=0:0
 open=true
 [source]
 path=checkTools.cpp
-cursor=16:70
+cursor=18:0
 open=true
 [header]
 path=ReadLines.h
@@ -35,7 +35,7 @@ cursor=0:0
 open=true
 [header]
 path=checkTools.h
-cursor=7:55
+cursor=3:23
 open=true
 [other]
 path=RSTR_EU.txt
