@@ -1,9 +1,4 @@
-#include "checkTools.h"
-int checkKeyWords(const std::vector<std::string> &line_vec)
-{
-	
-	return 0;
-}
+#include "auxTools.h"
 //Formato de la instruccion: P_CLAVE -VALOR NOMBRE
 int lineSplitter(std::string s,std::vector<std::string> &aux_vec)
 {
@@ -28,7 +23,3 @@ int lineSplitter(std::string s,std::vector<std::string> &aux_vec)
 	return 1;
 }
 
-int rstrCheckline(std::string s)
-{
-	return 0;
-}
