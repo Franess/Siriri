@@ -4,13 +4,18 @@
 #include <string>
 #include <fstream>
 #include <stdexcept>
+#include <vector>
+#include <algorithm>
 
 class instructionChecker {
 public:
 	instructionChecker();
 	int checkKeywords(std::string s);
 	int checkInputFormat(std::string s);
+	std::string* gKeyword(int i);
+	int numofKeywords()const;
 private:
+	std::vector<std::string> m_keywordsVec;
 };
 
 #endif
