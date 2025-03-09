@@ -7,6 +7,11 @@
 #include <vector>
 #include <algorithm>
 
+enum instructionError
+{
+	ERROR_CODE,SUCCESS_CODE
+};
+
 class instructionChecker {
 public:
 	instructionChecker();

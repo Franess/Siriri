@@ -12,7 +12,7 @@ int main()
 	instructionChecker ichk;
 	cout<<"Cantidad de palabras clave: "<<ichk.numofKeywords()<<"\n";
 	vector<string> v;
-	if(lineSplitter("RSTR_EU",v)==SUCCESS_CODE)
+	if(lineSplitter("RSTR_EU",v)==instructionError::SUCCESS_CODE)
 		for(string &x:v) cout<<x<<endl<<x.size()<<endl;
 	else
 		cout<<"Error en la instruccion"<<endl;

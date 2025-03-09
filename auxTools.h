@@ -1,8 +1,6 @@
 #ifndef CHECKTOOLS_H
 #define CHECKTOOLS_H
 
-#define  SUCCESS_CODE 1
-
 #include <algorithm>
 #include <string>
 #include <vector>
