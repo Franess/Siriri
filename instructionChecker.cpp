@@ -15,13 +15,24 @@ int instructionChecker::checkKeywords(std::string s)
 	auto keyw_it = std::find(m_keywordsVec.begin(),m_keywordsVec.end(),s);
 	if(keyw_it==m_keywordsVec.end())
 	{
-		return 0;
+		return instructionError::ERROR_CODE;
 	}
-	return 1;
+	return instructionError::SUCCESS_CODE;
 }
-int instructionChecker::checkInputFormat(std::string s)
+int instructionChecker::checkInputFormat(std::string s,int chk_case)
 {
-	return 1;
+	switch(chk_case)
+	{
+	case 0:
+		if(s.size()==0) return instructionError::EMPTY_PARAM;
+		break;
+	case 1:
+		if(s.size()>32) return instructionError::OVERSIZEPARAM_ERROR;
+		break;
+	default:
+		break;
+	}
+	return instructionError::SUCCESS_CODE;
 }
 std::string* instructionChecker::gKeyword(int i)
 {
