@@ -24,11 +24,13 @@ int instructionChecker::checkInputFormat(std::string s,int chk_case)
 	switch(chk_case)
 	{
 	case 0:
-		if(s.size()==0) return instructionError::EMPTY_PARAM;
+		if(s.size()<=1) return instructionError::EMPTY_PARAM;
 		break;
 	case 1:
 		if(s.size()>32) return instructionError::OVERSIZEPARAM_ERROR;
 		break;
+	case 2:
+		if(s.find('-',0)==std::string::npos) return instructionError::MISSINGDASH_ERROR;
 	default:
 		break;
 	}

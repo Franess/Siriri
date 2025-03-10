@@ -26,9 +26,13 @@ int main()
 	else
 		cout<<"El metodo no es valido\n";
 	
-	if(ichk.checkInputFormat("a",1)!=instructionError::SUCCESS_CODE) 
-		cout<<"Sobredimension\n";
-	else
-		cout<<"Dimension correcta\n";
+	int x =0;
+	for(int i=0;i<3;i++) 
+	{
+		x+=ichk.checkInputFormat("- ",i);
+	}
+	if(x!=3) cout<<"Instruccion no valida\n";
+	else cout<<"Instruccion Valida\n";
+	
 	return 0;
 }

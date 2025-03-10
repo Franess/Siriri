@@ -12,10 +12,19 @@ int lineSplitter(std::string s,std::vector<std::string> &aux_vec)
 			aux_vec.clear();
 			return 2;
 		}
-		aux_vec.push_back(s.substr(p_it-s.begin(),a_it-p_it));
-		p_it = a_it;
-		a_it = std::find(std::next(p_it),s.end(),' ');
-		std::advance(p_it,1);
+		if((s.substr(p_it-s.begin(),a_it-p_it)).size()>=1)
+		{
+			aux_vec.push_back(s.substr(p_it-s.begin(),a_it-p_it));
+			p_it = a_it;
+			a_it = std::find(std::next(p_it),s.end(),' ');
+			std::advance(p_it,1);
+		}else
+		{
+			p_it = a_it;
+			a_it = std::find(std::next(p_it),s.end(),' ');
+			std::advance(p_it,1);
+		}
+		
 	}
 	std::string last_instr = s.substr(p_it-s.begin(),s.end()-p_it);
 	if(last_instr.length()>0)
