@@ -21,10 +21,10 @@ int main()
 		cout<<"palabra clave: "<<*ichk.gKeyword(i)<<"\n";
 	}
 	//Prueba metodo
-	if(ichk.checkKeywords("RSTR_EU")!=instructionError::SUCCESS_CODE)
-		cout<<"El metodo es valido\n";
+	if(ichk.identifierChecker("HJÑAKSJDFK",2)==instructionError::SUCCESS_CODE)
+		cout<<" valido\n";
 	else
-		cout<<"El metodo no es valido\n";
+		cout<<"no es valido\n";
 	
 	int x =0;
 	for(int i=0;i<3;i++) 

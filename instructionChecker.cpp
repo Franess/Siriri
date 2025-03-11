@@ -10,7 +10,7 @@ instructionChecker::instructionChecker() {
 	}
 	f.close();
 }
-int instructionChecker::checkKeywords(std::string s)
+int instructionChecker::checkKeywords(std::string s) const
 {
 	auto keyw_it = std::find(m_keywordsVec.begin(),m_keywordsVec.end(),s);
 	if(keyw_it==m_keywordsVec.end())
@@ -19,7 +19,7 @@ int instructionChecker::checkKeywords(std::string s)
 	}
 	return instructionError::SUCCESS_CODE;
 }
-int instructionChecker::checkInputFormat(std::string s,int chk_case)
+int instructionChecker::checkInputFormat(std::string s,int chk_case)const
 {
 	switch(chk_case)
 	{
@@ -27,7 +27,7 @@ int instructionChecker::checkInputFormat(std::string s,int chk_case)
 		if(s.size()<=1) return instructionError::EMPTY_PARAM;
 		break;
 	case 1:
-		if(s.size()>32) return instructionError::OVERSIZEPARAM_ERROR;
+		if(s.size()>31) return instructionError::OVERSIZEPARAM_ERROR;
 		break;
 	case 2:
 		if(s.find('-',0)==std::string::npos) return instructionError::MISSINGDASH_ERROR;
@@ -36,7 +36,7 @@ int instructionChecker::checkInputFormat(std::string s,int chk_case)
 	}
 	return instructionError::SUCCESS_CODE;
 }
-std::string* instructionChecker::gKeyword(int i)
+std::string* instructionChecker::gKeyword(int i) 
 {
 	if(i<this->numofKeywords())
 	{
@@ -49,4 +49,28 @@ std::string* instructionChecker::gKeyword(int i)
 int instructionChecker::numofKeywords()const
 {
 	return m_keywordsVec.size();
+}
+int instructionChecker::identifierChecker(std::string s, int chk_case) const
+{
+	switch(chk_case)
+	{
+	case 0:
+		if(s.size()<=1) return instructionError::EMPTY_PARAM;
+		break;
+	case 1:
+		if(s.size()>31) return instructionError::OVERSIZEPARAM_ERROR;
+		break;
+	case 2:
+		if(s[0]<64 || (s[0]>90 && s[0]<97) || (s[0]>=123 && s[0]<128))
+		{
+			return instructionError::CHARACTER_ERROR;
+		}else
+		{
+			return instructionError::SUCCESS_CODE;
+		}
+		break;
+	default:
+		break;
+	}
+	return instructionError::SUCCESS_CODE;
 }

@@ -12,16 +12,17 @@
 
 enum instructionError
 {
-	ERROR_CODE,SUCCESS_CODE,EMPTY_PARAM,OVERSIZEPARAM_ERROR,MISSINGDASH_ERROR,TOTAL_CODES
+	ERROR_CODE,SUCCESS_CODE,EMPTY_PARAM,OVERSIZEPARAM_ERROR,MISSINGDASH_ERROR,CHARACTER_ERROR,TOTAL_CODES
 };
 
 class instructionChecker {
 public:
 	instructionChecker();
-	int checkKeywords(std::string s);
-	int checkInputFormat(std::string s,int chk_case);
+	int checkKeywords(std::string s)const;
+	int checkInputFormat(std::string s,int chk_case)const;
 	std::string* gKeyword(int i);
 	int numofKeywords()const;
+	int identifierChecker(std::string s, int chk_cas)const;
 private:
 	std::vector<std::string> m_keywordsVec;
 };

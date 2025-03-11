@@ -12,6 +12,8 @@ linesManip::linesManip(std::string s, bool n_file):m_fileName(s)
 	{
 		f.open(s,std::ios::in);
 		if(!f.is_open()) throw std::runtime_error("No se pudo abrir el archivo\t"+s);
+		std::string aux;
+		while(std::getline(f,s)) m_lines.push_back(s);
 	}
 	f.close();
 }
