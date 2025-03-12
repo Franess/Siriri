@@ -26,6 +26,9 @@ int main()
 	else
 		cout<<"no es valido\n";
 	
+	//Como los metodos devuelven un elemento de un enum (un entero), cuando la cadena no tiene las caracteristicas que corresponden
+	//podemos interpretar la suma de enteros como un error, si esta es diferente a la cantidad de cases del switch, se trata de una cadena 
+	//invalida, en cambio si la suma es adecuada, la cadena es completamente valida (ver los fuentes de la clase)
 	int x =0;
 	for(int i=0;i<3;i++) 
 	{

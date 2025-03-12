@@ -13,7 +13,7 @@ linesManip::linesManip(std::string s, bool n_file):m_fileName(s)
 		f.open(s,std::ios::in);
 		if(!f.is_open()) throw std::runtime_error("No se pudo abrir el archivo\t"+s);
 		std::string aux;
-		while(std::getline(f,s)) m_lines.push_back(s);
+		while(std::getline(f,aux)) m_lines.push_back(aux);
 	}
 	f.close();
 }
@@ -46,6 +46,22 @@ void linesManip::saveLines()
 	if(!f.is_open()) throw std::runtime_error("No se pudo abrir el archivo");
 	for(std::string &x:m_lines) f<<x<<std::endl;
 	f.close();
+	m_saveStatus = true;
+}
+void linesManip::openFile(std::string new_name)
+{
+	m_fileName = new_name;
+	std::fstream f;
+	f.open(m_fileName,std::ios::in);
+	if(!f.is_open()) throw std::runtime_error("No se pudo abrir el archivo\t"+m_fileName);
+	std::string aux;
+	while(std::getline(f,aux)) m_lines.push_back(aux);
+	m_saveStatus = false;
+	f.close();
+}
+bool linesManip::is_save()const
+{
+	return m_saveStatus;
 }
 linesManip::~linesManip()
 {
