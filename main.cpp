@@ -2,6 +2,7 @@
 #include "auxTools.h"
 #include <iostream>
 #include "instructionChecker.h"
+#include "ComponentManip.h"
 
 using namespace std;
 
@@ -9,6 +10,7 @@ int main()
 {
 	linesManip l_m("nuevo_archivo.edc",false);
 	instructionChecker ichk;
+	ComponentManip cmp;
 	cout<<"Cantidad de palabras clave: "<<ichk.numofKeywords()<<"\n";
 	cout<<"Cantidad de codigos: "<<instructionError::TOTAL_CODES<<"\n";
 	vector<string> v;
@@ -34,8 +36,16 @@ int main()
 	{
 		x+=ichk.checkInputFormat("- ",i);
 	}
-	if(x!=3) cout<<"Instruccion no valida\n";
-	else cout<<"Instruccion Valida\n";
+	if(x!=3) cout<<"Instruccion no valida\n\n\n";
+	else cout<<"Instruccion Valida\n\n\n";
+	
+	//Prueba carga de componentes
+	if(cmp.gComponent(0))
+	{
+		Component c = *cmp.gComponent(0);
+		cout<<"Nombre : "<<c.id_comp<<endl;
+		for(string &x:c.m_design) cout<<x<<endl;
+	}
 	
 	return 0;
 }
