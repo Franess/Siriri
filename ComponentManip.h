@@ -19,6 +19,7 @@ class ComponentManip {
 public:
 	ComponentManip();
 	Component* gComponent(unsigned int i);
+	size_t numofcomponents()const;
 	
 private:
 	std::vector<Component> m_comps; //Vector de Componentes

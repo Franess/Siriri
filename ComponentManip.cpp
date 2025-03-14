@@ -29,6 +29,10 @@ ComponentManip::ComponentManip() {
 }
 Component* ComponentManip::gComponent(unsigned int i)
 {
-	if(i<m_comps.size()) return &m_comps[i];
+	if(i<numofcomponents()) return &m_comps[i];
 	else return nullptr;
+}
+size_t ComponentManip::numofcomponents()const
+{
+	return m_comps.size();
 }

@@ -74,3 +74,21 @@ int instructionChecker::identifierChecker(std::string s, int chk_case) const
 	}
 	return instructionError::SUCCESS_CODE;
 }
+void instructionChecker::saveKeywords(std::vector<std::string> v_s)
+{
+	std::fstream f("listadoPalabrasClave.txt", std::ios::out|std::ios::trunc);
+	if(!f.is_open()) throw std::runtime_error("No se puede abrir el siguiente archivo : listadoPalabrasClave.txt");
+	for(std::string &x:m_keywordsVec)
+	{
+		f<<x<<std::endl;
+	}
+	f.close();
+}
+void instructionChecker::updateKeywords(std::string s)
+{
+	auto find_it = std::find(m_keywordsVec.begin(),m_keywordsVec.end(),s);
+	if(find_it != m_keywordsVec.end())
+	{
+		m_keywordsVec.push_back(s);
+	}
+}

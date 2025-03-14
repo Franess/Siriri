@@ -23,6 +23,8 @@ public:
 	std::string* gKeyword(int i);
 	int numofKeywords()const;
 	int identifierChecker(std::string s, int chk_cas)const;
+	void saveKeywords(std::vector<std::string> v_s);
+	void updateKeywords(std::string s);
 private:
 	std::vector<std::string> m_keywordsVec;
 };

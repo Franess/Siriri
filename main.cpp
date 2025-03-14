@@ -1,8 +1,8 @@
-#include "linesManip.h"
-#include "auxTools.h"
+#include "./headers/linesManip.h"
+#include "./headers/auxTools.h"
 #include <iostream>
-#include "instructionChecker.h"
-#include "ComponentManip.h"
+#include "./headers/instructionChecker.h"
+#include "./headers/ComponentManip.h"
 
 using namespace std;
 
