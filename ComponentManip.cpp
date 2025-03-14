@@ -1,5 +1,11 @@
 #include "ComponentManip.h"
 
+bool compare_id(std::string &id, Component &c)
+{
+	if(c.id_comp == id) return true;
+	else return false;
+}
+
 ComponentManip::ComponentManip() {
 	std::fstream f("archivoComponentes.txt",std::ios::in);
 	if(!f.is_open()) throw std::runtime_error("No se pudo abrir el archivo en cuestion: archivoComponentes.txt");
@@ -35,4 +41,23 @@ Component* ComponentManip::gComponent(unsigned int i)
 size_t ComponentManip::numofcomponents()const
 {
 	return m_comps.size();
+}
+std::vector<std::string> ComponentManip::gCompDesign(std::string idd)const
+{
+	std::vector<std::string> aux_vec;
+	Component* cp_ptr = nullptr;
+	for(Component x:m_comps)
+	{
+		if(x.id_comp==idd)
+		{
+			cp_ptr = &x;
+		}
+	}
+	if(cp_ptr)
+	{
+		return (*cp_ptr).m_design;
+	}else
+	{
+		return aux_vec;
+	}
 }

@@ -20,6 +20,7 @@ public:
 	ComponentManip();
 	Component* gComponent(unsigned int i);
 	size_t numofcomponents()const;
+	std::vector<std::string> gCompDesign(std::string id)const;
 	
 private:
 	std::vector<Component> m_comps; //Vector de Componentes

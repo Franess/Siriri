@@ -15,7 +15,7 @@ tab_width=4
 tab_use_spaces=0
 explorer_path=.
 inherits_from=
-current_source=instructionChecker.cpp
+current_source=ComponentManip.cpp
 path_char=/
 [source]
 path=main.cpp
@@ -34,7 +34,7 @@ cursor=91:29
 open=true
 [source]
 path=ComponentManip.cpp
-cursor=31:23
+cursor=57:17
 open=true
 [header]
 path=linesManip.h
@@ -49,7 +49,7 @@ cursor=26:34
 open=true
 [header]
 path=ComponentManip.h
-cursor=21:27
+cursor=22:59
 open=true
 [other]
 path=RSTR_EU.txt
