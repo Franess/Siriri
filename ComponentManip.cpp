@@ -27,6 +27,7 @@ ComponentManip::ComponentManip() {
 		{
 			c = 0;
 			nn_comp.m_design = aux_vec;
+			aux_vec.clear();
 			m_comps.push_back(nn_comp);
 		}
 		
@@ -58,6 +59,16 @@ std::vector<std::string> ComponentManip::gCompDesign(std::string idd)const
 		return (*cp_ptr).m_design;
 	}else
 	{
-		return aux_vec;
+		return aux_vec; /*La idea el que si no se encuentra el componente con su diseño
+		se retorne un vector vacio, o vector de longitud 0*/
 	}
+}
+std::vector<std::string> ComponentManip::gCompKeywords()
+{
+	std::vector<std::string> aux_vec;
+	for(Component &x:m_comps)
+	{
+		aux_vec.push_back(x.id_comp);
+	}
+	return aux_vec;
 }

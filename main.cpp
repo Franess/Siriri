@@ -1,8 +1,8 @@
-#include "./headers/linesManip.h"
-#include "./headers/auxTools.h"
+#include "linesManip.h"
+#include "auxTools.h"
 #include <iostream>
-#include "./headers/instructionChecker.h"
-#include "./headers/ComponentManip.h"
+#include "instructionChecker.h"
+#include "ComponentManip.h"
 
 using namespace std;
 
@@ -11,13 +11,16 @@ int main()
 	linesManip l_m("nuevo_archivo.edc",false);
 	instructionChecker ichk;
 	ComponentManip cmp;
-	cout<<"Cantidad de palabras clave: "<<ichk.numofKeywords()<<"\n";
-	cout<<"Cantidad de codigos: "<<instructionError::TOTAL_CODES<<"\n";
+	vector<string> v_s = cmp.gCompKeywords();
 	vector<string> v;
-	if(lineSplitter("RSTR_EU",v)==instructionError::SUCCESS_CODE)
-		for(string &x:v) cout<<x<<endl<<x.size()<<endl;
-	else
-		cout<<"Error en la instruccion"<<endl;
+	for(unsigned int i =0;i<cmp.numofcomponents();++i) ichk.updateKeywords(v_s[i]);
+	if(ichk.checkKeywords("BATTERY")==instructionError::SUCCESS_CODE)
+	{
+		cout<<"Palabra valida\n\n\n";
+	}else
+	{
+		cout<<"Palabra clave invalida\n\n\n";
+	}
 	for(int i=0;i<ichk.numofKeywords();i++) 
 	{
 		cout<<"palabra clave: "<<*ichk.gKeyword(i)<<"\n";
@@ -40,12 +43,16 @@ int main()
 	else cout<<"Instruccion Valida\n\n\n";
 	
 	//Prueba carga de componentes
-	if(cmp.gComponent(0))
+	for(unsigned int i=0;i<cmp.numofcomponents();i++)
 	{
-		Component c = *cmp.gComponent(0);
+		Component c = *cmp.gComponent(i);
 		cout<<"Nombre : "<<c.id_comp<<endl;
 		for(string &x:c.m_design) cout<<x<<endl;
 	}
+	
+	v = cmp.gCompDesign("RSTR_EU");
+	cout<<"Correcto o no correcto: "<<v.size()<<endl;
+//	ichk.saveKeywords();
 	
 	return 0;
 }
